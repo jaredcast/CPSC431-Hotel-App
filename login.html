@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+          <meta name = "viewport" content = "width=device-width, intitial-scale=1"/>
+          <title>Tuffy Hotel Login</title>
+          <!-- <link rel = "stylesheet" type = "text/css" href = "styles.css"/> -->
+    </head>
+
+  <body>
+    <section id = "title">
+        <p>Login</p>
+    </section>
+
+    <section id = "login_screen">
+            <table style="border: 0px;">
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="username" size="20" maxlength="100" /></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email" size="20" maxlength="100" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="text" name="password" size="20" maxlength="100" /></td>
+                </tr>
+
+                <tr>
+                    <form action="main.php" method="post" enctype="multipart/form-data">
+                        <td colspan="1" style="text-align: center;"><input type="submit" name="submit" value="Login"></td>
+                    </form>
+                </tr> 
+                <tr>
+                    <form action="signup.php" method="post" enctype="multipart/form-data">
+                        <td colspan="1" style="text-align: center;"><input type="submit" name="submit" value="Sign up"/></td>
+                    </form>
+                </tr>
+            </table>
+    </section>
+
+
+  </body>
+
+</html>
