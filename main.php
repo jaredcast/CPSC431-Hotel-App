@@ -11,10 +11,4 @@ else {
     // echo $login;
 }
 
-
-
-
-
-
-
 ?>
