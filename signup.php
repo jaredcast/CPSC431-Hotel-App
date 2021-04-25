@@ -69,8 +69,10 @@
         //     exit;
         //  }
 
-        if ($username == "" || $email == "" || $password == "" || $name == "" || $role == "" || $phone == "") {
-            echo "<p>Missing data!!</p>";
+        if ($username == "" || $email == "" || $password == "" || $name == "" || $role == "" || $phone == ""
+            || !isset($username) || !isset($email) || !isset($password) || 
+            !isset($name) || !isset($role) || (!isset($phone))) {
+            echo "<p>You have not entered all the required details.<br /> Please go back and try again.</p>";
             exit;
         }
 
@@ -85,7 +87,7 @@
             echo $query;
         } else {
             $uploadStatus = "<p>An error has occurred. Missing data.</p>";
-        }
+            }
         echo $uploadStatus;
         $db->close();
     }
