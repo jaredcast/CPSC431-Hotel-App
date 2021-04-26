@@ -14,18 +14,14 @@
 
     <section id = "login_screen">
         <table style="border: 0px;">
-            <form action="main.php" method="post" enctype="multipart/form-data">
+            <form action="auth.php" method="post" enctype="multipart/form-data">
                 <tr>
                     <td>Username:</td>
                     <td><input type="text" name="username" size="20" maxlength="100" /></td>
                 </tr>
-                <!-- <tr>
-                    <td>Email:</td>
-                    <td><input type="text" name="email" size="20" maxlength="100" /></td>
-                </tr> -->
                 <tr>
                     <td>Password:</td>
-                    <td><input type="text" name="password" size="20" maxlength="100" /></td>
+                    <td><input type="password" name="password" size="20" maxlength="100" /></td>
                 </tr>
                 <tr>
                     <td colspan="6" style="text-align: center;"><input type="submit" name="submit" value="Login"></td>
@@ -38,8 +34,6 @@
                 </tr>
         </table>
     </section>
-
-
   </body>
 
 </html>

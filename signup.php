@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-    
+<html> 
     <section id = "login_screen">
         <form method="post">
             <table style="border: 0px;">
@@ -14,7 +13,7 @@
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="text" name="password" size="20" maxlength="100" /></td>
+                    <td><input type="password" name="password" size="20" maxlength="100" /></td>
                 </tr>
                 <tr>
                     <td>Full Name:</td>
@@ -33,8 +32,7 @@
                         <input type="radio" id="guest" name="role" value="guest">
                     </td>
                 </tr>
-            </table>
-            
+            </table>           
                 <input type="submit" name="signup" value="Sign up"/>
         </form>
     </section>
@@ -83,12 +81,12 @@
         $statement->execute();
 
         if ($statement->affected_rows > 0) {
-            $uploadStatus = "<p>User successfully signed up.</p>";
-            echo $query;
+            echo "<p>User successfully signed up.</p>";
+            echo "<p><a href=\"login.html\"><button>Back to log in</button></a></p>";
+            //echo $query;
         } else {
-            $uploadStatus = "<p>An error has occurred. Missing data.</p>";
+            echo "<p>An error has occurred. Missing data.</p>";
             }
-        echo $uploadStatus;
         $db->close();
     }
 
