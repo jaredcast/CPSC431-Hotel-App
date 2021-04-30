@@ -4,36 +4,56 @@
         <meta charset = "utf-8"/>
           <meta name = "viewport" content = "width=device-width, intitial-scale=1"/>
           <title>Tuffy Hotel Login</title>
-          <!-- <link rel = "stylesheet" type = "text/css" href = "styles.css"/> -->
+          <link rel = "stylesheet" type = "text/css" href = "stylesheet1.css"/>
     </head>
 
   <body>
-    <section id = "title">
-        <p>Login</p>
-    </section>
 
-    <section id = "login_screen">
-        <table style="border: 0px;">
-            <form action="auth.php" method="post" enctype="multipart/form-data">
-                <tr>
-                    <td>Username:</td>
-                    <td><input type="text" name="username" size="20" maxlength="100" /></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" name="password" size="20" maxlength="100" /></td>
-                </tr>
-                <tr>
-                    <td colspan="6" style="text-align: center;"><input type="submit" name="submit" value="Login"></td>
-                </tr> 
-            </form>
+	<header>
+        <nav>
+            <p>
+               <a href="homepage.html"> HotelBooking.com </a>
+            </p>
+
+            <dev id="links">
+                <ul>
+                    <li>
+                        <a href="signup.php">  Register </a>
+                    </li>
+                    <li>
+                        <a href="login.html"> Sign in </a>
+                    </li>
+                </ul>
+            </dev>
+        </nav>
+    </header>
+
+      <dev id="display">
+        <h2> Sign in or create an account </h2>
+
+        <section id="login_screen">
+            <table style="border: 0px;">
+                <form action="auth.php" method="post" enctype="multipart/form-data">
+                    <tr style="display: inline-grid;">
+                        <td>Username:</td>
+                        <td><input type="text" name="username" size="38" maxlength="100" /></td>
+                    </tr>
+                    <tr style="display: inline-grid;">
+                        <td>Password:</td>
+                        <td><input type="password" name="password" size="38" maxlength="100" /></td>
+                    </tr>
+                    <tr style="float: left;">
+                        <td colspan="6" style="text-align: center;"><input type="submit" name="submit" value="Login"></td>
+                    </tr>
+                </form>
                 <tr>
                     <form action="signup.php" method="post" enctype="multipart/form-data">
-                        <td colspan="6" style="text-align: center;"><input type="submit" name="submit" value="Sign up"/></td>
+                        <td colspan="6" style="text-align: center; float: left;"><input type="submit" name="submit" value="Sign up" /></td>
                     </form>
                 </tr>
-        </table>
-    </section>
-  </body>
+            </table>
+        </section>
 
+    </dev>
+</body>
 </html>
