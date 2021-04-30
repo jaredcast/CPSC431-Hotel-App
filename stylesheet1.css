@@ -1,0 +1,168 @@
+body
+{
+    margin: 0px;
+    background-color: lightgray;
+}
+
+nav{
+    float: left;
+    padding: 20px 40px 15px 40px;
+    width: -webkit-fill-available;
+    background-color: lightblue;
+}
+
+nav p{
+    display: inline;
+}
+
+nav ul{
+    display: inline;
+    padding: 0px;
+}
+
+header li{
+    display: inline;
+    margin: 0px 20px 0px 0px;
+}
+
+header a{
+    text-decoration: none;
+}
+
+header #links{
+    float: right;
+    margin-right: 70px;
+}
+
+#showcase{
+    height: 100px;
+}
+
+#showcase h2{
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-left: 40px;
+}
+
+#showcase h3{
+    font-size: 16px;
+    color: dimgray;
+    margin-top: 7px;
+    margin-left: 40px;
+}
+
+#displaybox{
+    width: 100%;
+    background-color: lightgray;
+    display: inline-flex;
+    justify-content: center;
+}
+
+#displaybox p{
+    margin-right: 8px;
+    padding: 5px;
+    border: solid;
+}
+
+#display{
+    display: inline-block;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#display h2{
+    text-align: center;
+    font-weight: 700;
+
+    padding: 10px 0px 20px 0px;
+}
+
+#login_screen table{
+    margin-left: auto;
+    margin-right: auto;
+    width: 290px;
+}
+
+table tr{
+    padding-bottom: 40px;
+}
+
+table tr:nth-child(n+3){
+    padding-bottom:10px;
+}
+
+
+/*Booking section style*/
+#booking{
+    background-color: white;
+}
+
+.input-group{
+    max-width: 260px;
+    width: 100%;
+    display: inherit;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    border: solid;
+    margin-left: 25px;
+    background-color: white;
+}
+
+.input-label{
+    display: block;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.input,
+.options{
+    outline: none;
+    border: none;
+    width: 100%;
+    min-height: 4rem;
+    padding: 1rem;
+    font-weight: bold;
+    color: #a5a5a5;
+    letter-spacing: 2px;
+    font-family: "Open Sans", sans-serif;
+    resize: none;
+}
+
+.form{
+    margin-left:60px;
+}
+.form-btn{
+    margin-top: 2.5rem;
+    cursor: pointer;
+}
+
+.btn-purple{
+    display:block;
+}
+
+.btn-purple:hover{
+    background-color: #56247f;
+}
+
+section{
+    padding: 3rem 0;
+}
+.container{
+    width: 100%;
+    max-width: 120rem;
+    /*padding: 0 1.5rem;*/
+    margin: 0 auto;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale3d(1.5, 1.5, 1.5);
+}
