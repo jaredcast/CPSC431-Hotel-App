@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html> 
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="stylesheet1.css" />
+    <title></title>
+</head>
+<body>
+<header>
+        <nav>
+            <p>
+                <a href="homepage.html"> HotelBooking.com </a>
+            </p>
+
+            <dev id="links">
+                <ul>
+                    <li>
+                        <a href="signup.php">  Register </a>
+                    </li>
+                    <li>
+                        <a href="login.html"> Sign in </a>
+                    </li>
+                </ul>
+            </dev>
+        </nav>
+    </header>
+
+	<dev id="display">
+        <h2> Sign in or create an account </h2>
+
+
+    </dev>
+
     <section id = "login_screen">
         <form method="post">
             <table style="border: 0px;">
                 <tr>
                     <td>Username:</td>
-                    <td><input type="text" name="username" size="20" maxlength="100" /></td>
+                    <td><input type="text" name="username" size="38" maxlength="100" /></td>
                 </tr>
                 <tr>
                     <td>Email:</td>
@@ -36,6 +67,7 @@
                 <input type="submit" name="signup" value="Sign up"/>
         </form>
     </section>
+</body>
 </html>
 
 
@@ -141,5 +173,3 @@
     //     echo "phone not set ";
     // }
 ?>
-
-
