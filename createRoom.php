@@ -1,7 +1,6 @@
 <?php
     session_start();
     $date = date("Y-m-d");
-    echo $date;
     if (isset($_SESSION['role']) && $_SESSION['role'] == "admin")
     {
         echo "<h1>Create a Room</h1>";

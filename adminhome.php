@@ -20,6 +20,7 @@
     <section id = "guest_menu">
     <table style="border: 0px;">
         <tr><td><a href="createRoom.php"><button>Create a Room</button></a></td></tr>
+        <tr><td><a href="viewRooms.php"><button>View All Rooms</button></a></td></tr>
         <tr><td><a href="logout.php"><button>Log out</button></a></td></tr>
     </table>
     </section>

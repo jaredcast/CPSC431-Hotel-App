@@ -8,8 +8,6 @@ $name = "";
 $role = "";
 $phone = "";
 
-
-
 #echo $login;
 if (isset($login)) {
 
@@ -24,8 +22,6 @@ if (isset($login)) {
         echo "<p>Error: Cannot connect to database!</p>";
         exit;
     }
-
-    
 
     $loginQuery = "SELECT * FROM users WHERE username ='" .$username. "' AND password = '" .$password."'";
     #$loginQuery = "SELECT * FROM users WHERE username ='" .$username. "' AND password= '".$password."'";
@@ -57,13 +53,13 @@ if (isset($login)) {
         // echo "ROLE ". $role."<br>";
         // echo "PHONE ". $phone."<br>"; 
         
-        echo $_SESSION['id']."<br>";
-        echo $_SESSION['username']."<br>";
-        echo $_SESSION['email']."<br>";
-        echo $_SESSION['password']."<br>"; //change this
-        echo $_SESSION['name']."<br>";
-        echo $_SESSION['role']."<br>";
-        echo $_SESSION['phone']."<br>";
+        // echo $_SESSION['id']."<br>";
+        // echo $_SESSION['username']."<br>";
+        // echo $_SESSION['email']."<br>";
+        // echo $_SESSION['password']."<br>"; //change this
+        // echo $_SESSION['name']."<br>";
+        // echo $_SESSION['role']."<br>";
+        // echo $_SESSION['phone']."<br>";
     }
     else {
         echo "Failed to log in. There is an error with your username or password.";
