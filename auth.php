@@ -15,7 +15,7 @@ if (isset($login)) {
 
     if ($username == "" || $password == "" || !isset($username) || !isset($password)) {
         echo "<p>You have not entered all the required details.<br /> Please go back and try again.</p>";
-        echo "<p><a href=\"login.html\"><button>Return to Home</button></a></p>";
+        echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
         exit;
     }
 
@@ -30,7 +30,7 @@ if (isset($login)) {
     $loginQuery = "SELECT * FROM users WHERE username ='" .$username. "' AND password = '" .$password."'";
     #$loginQuery = "SELECT * FROM users WHERE username ='" .$username. "' AND password= '".$password."'";
     //$loginQuery = "SELECT * FROM users WHERE username = ? AND password = ? AND email = ?";
-    echo $loginQuery ."<br>";
+    //echo $loginQuery ."<br>";
     #$result = $db->query($loginQuery);
     $statement = $db->prepare($loginQuery);
     $statement->execute();
@@ -46,7 +46,7 @@ if (isset($login)) {
         $_SESSION['id'] = $id;
         $_SESSION['username'] = $username;
         $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
+        $_SESSION['password'] = $password; //change this
         $_SESSION['name'] = $name;
         $_SESSION['role'] = $role;
         $_SESSION['phone'] = $phone;
@@ -60,7 +60,7 @@ if (isset($login)) {
         echo $_SESSION['id']."<br>";
         echo $_SESSION['username']."<br>";
         echo $_SESSION['email']."<br>";
-        echo $_SESSION['password']."<br>";
+        echo $_SESSION['password']."<br>"; //change this
         echo $_SESSION['name']."<br>";
         echo $_SESSION['role']."<br>";
         echo $_SESSION['phone']."<br>";
@@ -68,7 +68,7 @@ if (isset($login)) {
     else {
         echo "Failed to log in. There is an error with your username or password.";
         session_destroy();
-        echo "<p><a href=\"login.html\">Return to Home</a></p>";
+        echo "<p><a href=\"login.php\">Return to Home</a></p>";
         exit;
     }
     // else {
@@ -87,7 +87,7 @@ if (isset($login)) {
         else {
             echo "There was a problem with authenticating your role.";
             session_destroy();
-            echo "<p><a href=\"login.html\">Return to Home</a></p>";
+            echo "<p><a href=\"login.php\">Return to Home</a></p>";
             exit;
         }
         exit;
@@ -95,14 +95,14 @@ if (isset($login)) {
     else {
         echo "Failed to log in. There is an error with your username or password.";
         session_destroy();
-        echo "<p><a href=\"login.html\">Return to Home</a></p>";
+        echo "<p><a href=\"login.php\">Return to Home</a></p>";
         exit;
     }
     echo $result;
 }
 else {
     echo "You are not logged in or authorized to see this page. Please try again later.";
-    echo "<p><a href=\"login.html\">Return to Home</a></p>";
+    echo "<p><a href=\"login.php\">Return to Home</a></p>";
     // echo $login;
 }
 

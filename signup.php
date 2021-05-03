@@ -75,6 +75,10 @@
         }
 
         @$db = new mysqli('mariadb', 'cs431s26', 'Uo3io9ve', 'cs431s26');
+        if (mysqli_connect_errno()) {
+            echo "<p>Error: Cannot connect to database!</p>";
+            exit;
+        }
         $query = "INSERT INTO users (username, email, password, name, role, phone) VALUES (?, ?, ?, ?, ?, ?)";
         $statement = $db->prepare($query);
         $statement->bind_param('ssssss', $username, $email, $password, $name, $role, $phone);
@@ -82,7 +86,7 @@
 
         if ($statement->affected_rows > 0) {
             echo "<p>User successfully signed up.</p>";
-            echo "<p><a href=\"login.html\"><button>Back to log in</button></a></p>";
+            echo "<p><a href=\"login.php\"><button>Back to log in</button></a></p>";
             //echo $query;
         } else {
             echo "<p>An error has occurred. Missing data.</p>";

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="stylesheet1.css" />
+    <title></title>
+</head>
+<body>
+    <header>
+        <nav>
+            <p>
+                <a href="homepage.html"> HotelBooking.com </a>
+            </p>
+
+            <dev id="links">
+                <ul>
+                    <li>
+                        <a href="signup.php">  Register </a>
+                    </li>
+                    <li>
+                        <a href="login.php"> Sign in </a>
+                    </li>
+                </ul>
+            </dev>
+        </nav>
+    </header>
+
+
+    <dev id="showcase">
+        <h2> Find deals for any season </h2>
+        <h3> Book your next room with us </h3>
+        
+    </dev>
+        <section id="booking">
+            <div class="container">
+            <form action="" class="form">
+                <div class="input-group">
+                    <label style="width: 289px;" for="roomtype" class="input-label">Room Type</label>
+                    <select class="options" id="roomtype">
+                        <option value="0">Normal</option>
+                        <option value="0">Value</option>
+                        <option value="0">Penthouse</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label style="width:191px;" for="check-in" class="input-label">Check in</label>
+                    <input style="width:241px; padding-top: 0px; padding-bottom: 0px; padding-left:inherit; padding-right:inherit" type="date" class="input" id="check-in" />
+                </div>
+                <div style="max-width: 290px;" class="input-group">
+                    <label style="width: 285px;" for="check-out" class="input-label">Check out</label>
+                    <input style="padding-top: 0px; padding-bottom: 0px; padding-left: inherit; padding-right: inherit;" type="date" class="input" id="check-out" />
+                </div>
+                <div style="max-width: 118px" class="input-group">
+                    <label for="beds" class="input-label">Beds</label>
+                    <select style="width: auto" class="options" id="beds">
+                        <option value="0">0</option>
+                        <option value="0">1</option>
+                        <option value="0">2</option>
+                        <option value="0">3</option>
+                        <option value="0">4</option>
+                        <option value="0">5</option>
+                    </select>
+                </div>
+                <div style="width: 201px;" class="input-group">
+                    <label for="price" class="input-label">Price</label>
+                    <select style="width: auto;" class="options" id="price">
+                        <option value="0">$0-$99</option>
+                        <option value="0">$100-$199</option>
+                        <option value="0">$200-$299</option>
+                        <option value="0">$300-$399</option>
+                        <option value="0">$400-$499</option>
+                        <option value="0">$500-$599</option>
+                        <option value="0">$600-$699</option>
+                        <option value="0">$700-$799</option>
+                        <option value="0">$800-$899</option>
+                        <option value="0">$900-$999</option>
+                        <option value="0">$1000+</option>
+                    </select>
+                </div>
+                <div class="center">
+                <button type="submit" class="btn form-btn btn-purple">Search</button>
+                </div>
+            </form>
+            </div>
+        </section>
+    
+</body>
+</html>
