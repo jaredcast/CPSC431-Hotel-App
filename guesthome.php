@@ -10,7 +10,7 @@
     else {
         echo "You are not logged in and not authorized to view this page.";
         session_destroy();
-        echo "<p><a href=\"login.html\"><button>Return to Home</button></a></p>";
+        echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
         exit;
     }
 ?>
