@@ -45,117 +45,87 @@ $choice = $_GET['choice'];
     			}
 		?>
 
-		<div class = "showcase">
-        <!-- <form action = "bookRoom.php" method = "GET">
-        Type: 
-                <td><select name="choice" onchange="this.form.submit();">
-                    <option></option>
-                            <option value = "normal">Normal</option>
-                            <option value = "value">Value</option>
-                                <option value = "deluxe">Deluxe</option>
-                            <option value = "penthouse">Penthouse</option>
-                </select>
-                </td>
-        </form> -->
-        <form method="get" enctype="multipart/form-data">
-            <table style="border: 5px;">
-                    <tr>
-                        <td>Minimum Price:</td>
-                        <td><input type="number" name="maxPrice" min="1"/></td>
-                    </tr>
-                    <tr>
-                        <td>Maximum Price:</td>
-                        <td><input type="number" name="maxPrice" min="1"/></td>
-                    </tr>
-                    <tr>
-                        <td>Beds:</td>
-                        <td><input type="number" name="beds" min="1"/></td>
-                    </tr>
-                    <tr>
-                        <td>Type:</td>
-                        <td>                          
-                            <input type="radio" id="value" name="type" value="value">
-                            <label for="value">Value</label>
+	
+       		<form action = "bookRoom.php" method="post" enctype="multipart/form-data">
+            		<table style="border: 5px;">
+                    		<tr>
+                        		<td>Minimum Price:</td>
+                        		<td><input type="number" name="maxPrice" min="1"/></td>
+                    		</tr>
+                    		<tr>
+                        		<td>Maximum Price:</td>
+                        		<td><input type="number" name="maxPrice" min="1"/></td>
+                    		</tr>
+                    		<tr>
+                        		<td>Beds:</td>
+                        		<td><input type="number" name="beds" min="1"/></td>
+                    		</tr>
+                    		<tr>
+                        		<td>Type:</td>
+                        		<td>                          
+                       				<input type="radio" id="value" name="type" value="value">
+                         			<label for="value">Value</label>
                             
-                            <input type="radio" id="normal" name="type" value="normal">
-                            <label for="normal">Normal</label>
+                            			<input type="radio" id="normal" name="type" value="normal">
+                            			<label for="normal">Normal</label>
                             
-                            <input type="radio" id="deluxe" name="type" value="deluxe">
-                            <label for="deluxe">Deluxe</label>
+                            			<input type="radio" id="deluxe" name="type" value="deluxe">
+                 				<label for="deluxe">Deluxe</label>
                             
-                            <input type="radio" id="penthouse" name="type" value="penthouse">
-                            <label for="penthouse">Penthouse</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="start">Start date:</label></td>
-                        <td><input type="date" id="start" name="start" min="<?php echo $date; ?>" max="12-31-2030"></td>                    
-                    </tr>
-                    <tr>
-                        <td><label for="start">End date:</label></td>
-                        <td><input type="date" id="end" name="end"></td>
-                    </tr>
-            </table>  
-            <input type="submit" name="searchRoom" value="Search for rooms"/>
-        </form>
+                       				<input type="radio" id="penthouse" name="type" value="penthouse">
+                       				<label for="penthouse">Penthouse</label>
+                       			</td>
+               			</tr>
+               			<tr>
+       	                		<td><label for="start">Start date:</label></td>
+                        		<td><input type="date" id="start" name="start" min="<?php echo $date; ?>" max="12-31-2030"></td>                    
+                    		</tr>
+                    		<tr>
+                        		<td><label for="start">End date:</label></td>
+                        		<td><input type="date" id="end" name="end"></td>
+                    		</tr>
+            		</table>  
+            		<input type="submit" name="searchRoom" value="Search for rooms"/>
+        	</form>
         
-		
-		<!-- <section id = "roomdetails">
-			<div style ="margin: 0px 40px 0px 40px;" id = "test1">
-				<p>Room: </p>
-				<p>"Pic"</p>
-				<p>Price: </p>
-				<p>Type: </p>
-				<p>Beds: </p>
-				<p>Description: </p>
-			</div>
+	<div class = "showcase">	
+		<?php
+        	//Connect to database
+        	@$db = new mysqli('mariadb', 'cs431s26', 'Uo3io9ve', 'cs431s26');
+        	if (mysqli_connect_errno()) {
+        	    echo "<p>Error: Cannot connect to database!</p>";
+        	    exit;
+        	}
 
-			<div style ="margin: 0px 40px 0px 40px;" id = "test2">
-				<p>Room: </p>
-				<p>"Pic"</p>
-				<p>Price: </p>
-				<p>Type: </p>
-				<p>Beds: </p>
-				<p>Description: </p>
-			</div>
 
-			<div style ="margin: 0px 40px 0px 40px;" id = "test3">
-				<p>Room: </p>
-				<p>"Pic"</p>
-				<p>Price: </p>
-				<p>Type: </p>
-				<p>Beds: </p>
-				<p>Description: </p>
-			</div> -->
-	<?php
-        //Connect to database
-        @$db = new mysqli('mariadb', 'cs431s26', 'Uo3io9ve', 'cs431s26');
-        if (mysqli_connect_errno()) {
-            echo "<p>Error: Cannot connect to database!</p>";
-            exit;
-        }
-   //Where I'm stuck ... I think it has to be with the query. Can't figure out the "WHERE" part
- 	    $query = "SELECT roomNUM, price, beds, type, roomdesc, start, end, filename FROM rooms WHERE type = $choice ";
-        $stmt = $db->prepare($query);
-        //$stmt->bind_param($choice, Type);  
-        $stmt->execute();
-        $stmt->store_result();		
-		$stmt->bind_result($roomNum, $price, $beds, $type, $roomdesc);
+ 		$query = "SELECT roomNUM, filename, price, beds, type, roomdesc, start, end FROM rooms WHERE start LIKE '%$submit%' AND end LIKE '%$submit%'";
+        	$stmt = $db->prepare($query);
+        	//$stmt->bind_param($choice, Type);  
+        	$stmt->execute();
+        	$stmt->store_result();		
+		$stmt->bind_result($roomNum, $filename, $price, $beds, $type, $roomdesc, $start, $end);
 
 	//While the statement fetches different queries in the database, keep printing out the information.
-            while($stmt->fetch()) {
-                echo "Room: " . $roomNum . "<br>";
-                echo "Price: " . $price . "<br>";
-                echo "Beds: " . $beds . "<br>";
-                echo "Type: " . $type . "<br>";
-		            echo "Description: " . $roomdesc . "<br><br>";
-            }
-            $statement->free_result();
-            $db->close();
+           	while($stmt->fetch()) {
+                	echo "<p>Room: " . $roomNum . "<br>";
+			echo " $filename " ; 
+			echo"<br>" ;
+               		echo "Price: " . $price . "<br>";
+                	echo "Beds: " . $beds . "<br>";
+                	echo "Type: " . $type . "<br>";
+                	echo "Description: " . $roomdesc . "<br>";
+			echo "Start: " . $start . " <br>";
+			echo "End: " . $end. "<br><br></p>";
+            	}
+            	$statement->free_result();
+            	$db->close();
+		?>
 
-	?>
-		</section>
-		<div>
+		<form action = "bookRoom.php" method="post" enctype="multipart/form-data">
+			<input type="submit" name="bookRoom" value="Book Room"/>
+        	</form>
+	</div>
+		
 
 	</body>
 </html>
