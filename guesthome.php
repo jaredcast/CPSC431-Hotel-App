@@ -19,7 +19,7 @@
 <html>
     <section id = "guest_menu">
     <table style="border: 0px;">
-        <tr><td><input type="submit" name="bookroom" value="Book a room"/></td></tr>
+        <tr><td><a href = "bookRoom.php"><input type="submit" name="bookroom" value="Book a room"/></td></tr>
         <tr><td><input type="submit" name="asdf" value="asdf"/></td></tr>
         <tr><td><a href="logout.php"><button>Log out</button></a></td></tr>
     </table>

@@ -33,8 +33,7 @@
                         <input type="radio" id="guest" name="role" value="guest">
                     </td>
                 </tr>
-            </table>
-            
+            </table>           
                 <input type="submit" name="signup" value="Sign up"/>
         </form>
     </section>
