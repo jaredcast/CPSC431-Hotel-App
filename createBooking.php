@@ -31,10 +31,11 @@
         exit;
     }
     
-    if (isset($_POST['bookRoom']))
+    if (isset($_POST['bookRoom']) && isset($_POST['roomNum'])) //Check if both POST values are set
     {
-        $temp = $_POST['bookRoom'];
-        $roomNum = str_replace("Book Room ", "", $temp);
+        // $temp = $_POST['bookRoom'];
+        // $roomNum = str_replace("Book Room ", "", $temp); //change after hidden
+        $roomNum = $_POST['roomNum']; //Get the room number from before.
 
         @$db = new mysqli('mariadb', 'cs431s26', 'Uo3io9ve', 'cs431s26');
         if (mysqli_connect_errno()) {
@@ -42,10 +43,13 @@
             exit;
         }
 
+        //Insert new booking
         $query = "INSERT INTO bookings (guestUsername, roomNum, startDate, endDate) VALUES (?, ?, ?, ?)";
         $statement = $db->prepare($query);
         $statement->bind_param('ssss', $_SESSION['username'], $roomNum, $_SESSION['bookStart'], $_SESSION['bookEnd']);
         $statement->execute();
+
+        //Summarize the booking if it went through. If not, there was a conflicting error
         if ($statement->affected_rows > 0) {
             echo "<p>Your booking was successfully added.</p>";
             echo "<p>" . $_SESSION['username'] . " is booked for Room Number " .$roomNum. " from " . $_SESSION['bookStart'] . " to " . $_SESSION['bookEnd']; 
@@ -55,6 +59,7 @@
             exit;
         }
 
+        //Use this query to show the info of the room that was just booked. Although, show the length of the stay.
         $query2 = "SELECT * FROM rooms WHERE roomNum = '" . $roomNum . "'";
         $statement2 = $db->prepare($query2);
         $statement2->execute();

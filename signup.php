@@ -86,10 +86,10 @@
 
         if ($statement->affected_rows > 0) {
             echo "<p>User successfully signed up.</p>";
-            echo "<p><a href=\"login.php\"><button>Back to log in</button></a></p>";
+            echo "<p><a href=\"guesthome.php\"><button>Guest Home</button></a></p>";
             //echo $query;
         } else {
-            echo "<p>An error has occurred. Missing data.</p>";
+            echo "<p>An error has occurred with signing up.</p>";
             }
         $db->close();
     }

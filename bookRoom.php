@@ -44,6 +44,7 @@ $choice = $_GET['choice'];
                 exit;
             }
 		?>
+
         <form method="post" enctype="multipart/form-data">
                 <table style="border: 5px;">
                         <tr>
@@ -76,7 +77,8 @@ $choice = $_GET['choice'];
                         </tr>
                         <tr>
                             <td><label for="start">Start date:</label></td>
-                            <td><input type="date" id="start" name="start" min="<?php echo $date; ?>" max="12-31-2030"></td>                    
+                            <!-- <td><input type="date" id="start" name="start" min="<?php echo $date; ?>" max="12-31-2030"></td>                     -->
+                            <td><input type="date" id="start" name="start" max="12-31-2030"></td>                    
                         </tr>
                         <tr>
                             <td><label for="start">End date:</label></td>
@@ -95,6 +97,7 @@ $choice = $_GET['choice'];
             $bookStart =  $_POST['start'];
             $bookEnd =  $_POST['end'];
 
+            //Set temp session variables
             $_SESSION['bookMinPrice'] = $bookMinPrice;
             $_SESSION['bookMaxPrice'] = $bookMaxPrice;
             $_SESSION['bookBeds'] = $bookBeds;
@@ -118,10 +121,10 @@ $choice = $_GET['choice'];
                     exit;
                 }
 
-                #$query = "SELECT roomNUM, filename, price, beds, type, roomdesc, start, end FROM rooms WHERE start LIKE '%$submit%' AND end LIKE '%$submit%'";
-                $query = "SELECT * FROM rooms WHERE start >= '" . $bookStart . "' AND end >= '" .$bookEnd. "'"; //Ebnd date needs to be extended past how long the guest wants to stay. Availability
+                $query = "SELECT * FROM rooms WHERE start >= '" . $bookStart . "' AND end >= '" .$bookEnd. "'"; //End date needs to be extended past how long the guest wants to stay. Availability
                 //echo $query;
 
+                //Add anything needed to query.
                 if (!empty($bookMinPrice)) {
                     $query .= " AND price >= '" .$mibookMinPricenPrice. "'";
                 }
@@ -145,6 +148,7 @@ $choice = $_GET['choice'];
 
                 echo "<table>";
                 //While the statement fetches different queries in the database, keep printing out the information.
+                //Show the info for each hotel room that matches.
                 while($stmt->fetch()) {
                     echo "<tr><td>";
                     echo "<img src=\"uploads/" . $filename . "\"/><br>"; 
@@ -156,12 +160,14 @@ $choice = $_GET['choice'];
                     echo "Starting availability: " . $startAvail . " <br>";
                     echo "Ending availability: " . $endAvail. "<br>";
                     echo "<form action = 'createBooking.php' method='post' enctype='multipart/form-data'>";
-                    echo "<input type='submit' name='bookRoom' value='Book Room " .$roomNum."'/>";
+                    echo "<input type='submit' name='bookRoom' value='Book Room'/>";
+                    echo "<input type='hidden' name='roomNum' value='".$roomNum."'/>"; //hidden - Anything submitted can be accessed thru post. Used to go to createBooking.php
                     echo "</form>";
                     echo "</p></td></tr>";
                 }
                 $statement->free_result();
                 $db->close();
+                //hidden input types
             }
 		?>
 		
