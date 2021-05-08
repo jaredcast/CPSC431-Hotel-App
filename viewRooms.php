@@ -27,13 +27,13 @@
 
     while($statement->fetch()) {
         echo "<img src=\"uploads/" . $filename . "\"/><br>";
-        echo "Room Number: " . $roomNum . "<br>";
-        echo "Price: " . $price . "<br>";
-        echo "Beds: " . $beds . "<br>";
-        echo "Room Type: " . $type . "<br>";
-        echo "Room Description: " . $roomdesc . "<br>";
-        echo "Start date: " . $start . "<br>";
-        echo "End date: " . $end . "<br>";
+        echo "Room Number: " . htmlspecialchars($roomNum) . "<br>";
+        echo "Price: " . htmlspecialchars($price) . "<br>";
+        echo "Beds: " . htmlspecialchars($beds) . "<br>";
+        echo "Room Type: " . htmlspecialchars($type) . "<br>";
+        echo "Room Description: " . htmlspecialchars($roomdesc) . "<br>";
+        echo "Start date: " . htmlspecialchars($start) . "<br>";
+        echo "End date: " . htmlspecialchars($end) . "<br>";
         echo "<br><br>";
         // echo "<form action=\"\" method=\"POST\">
         // <input type=\"submit\" name=\"submit\" value=\"".$roomNum."\">

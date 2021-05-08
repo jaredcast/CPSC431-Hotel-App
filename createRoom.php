@@ -8,7 +8,7 @@
     else {
         echo "You are not logged in and not authorized to view this page.";
         session_destroy();
-        echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
+        echo "<p><a href=\"login.php\"><button>Return to Login</button></a></p>";
         exit;
     }
 ?>
@@ -69,6 +69,8 @@
 </html>
 
 <?php
+    echo "<p><a href=\"adminhome.php\"><button>Return to Admin Home</button></a></p>";
+
     $tmp_name = "temp"; //Temporary filename
 
     $roomNum = $_POST['roomNum']; //db
@@ -78,6 +80,9 @@
     $roomdesc = $_POST['roomdesc']; //db
     $start = $_POST['start'];
     $end = $_POST['end'];
+
+    $roomdesc = strip_tags($roomdesc); //NO WRITING TAGS TO DATABASE AS DESCRIPTION
+
 
     //Image processing
     $filename = $_FILES["imgUpload"]["name"]; //db
@@ -112,8 +117,13 @@
         //If moving the file worked
         if (move_uploaded_file($_FILES["imgUpload"]["tmp_name"],"uploads/".$filename)) {
             $query = "INSERT INTO rooms (roomNum, price, beds, type, roomdesc, start, end, filename) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            $statement = $db->prepare($query);
-            $statement->bind_param('ssssssss', $roomNum, $price, $beds, $type, $roomdesc, $start, $end, $filename);
+            //Prepare insert statement
+            $statement = $db->prepare($query); 
+            //Bind variables to params
+            $statement->bind_param('ssssssss', $roomNum, $price, $beds, $type, $roomdesc, $start, $end, $filename); 
+            //$statement->bind_param('ssssssss', $db->real_escape_string($roomNum), $db->real_escape_string($price), $db->real_escape_string($beds), $db->real_escape_string($type), $db->real_escape_string($roomdesc), $db->real_escape_string($start), $db->real_escape_string($end), $db->real_escape_string($filename));
+            
+            //Execute statement https://www.php.net/manual/en/mysqli-stmt.execute
             $statement->execute();
             if ($statement->affected_rows > 0) {
                 echo "<p>Room successfully added.</p>";

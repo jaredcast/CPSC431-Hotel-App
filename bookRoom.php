@@ -152,13 +152,13 @@ $choice = $_GET['choice'];
                 while($stmt->fetch()) {
                     echo "<tr><td>";
                     echo "<img src=\"uploads/" . $filename . "\"/><br>"; 
-                    echo "<p>Room: " . $roomNum . "<br>";
-                    echo "Price: " . $price . "<br>";
-                    echo "Beds: " . $beds . "<br>";
-                    echo "Type: " . $type . "<br>";
-                    echo "Description: " . $roomdesc . "<br>";
-                    echo "Starting availability: " . $startAvail . " <br>";
-                    echo "Ending availability: " . $endAvail. "<br>";
+                    echo "<p>Room: " . htmlspecialchars($roomNum) . "<br>";
+                    echo "Price: " . htmlspecialchars($price) . "<br>";
+                    echo "Beds: " . htmlspecialchars($beds) . "<br>";
+                    echo "Type: " . htmlspecialchars($type) . "<br>";
+                    echo "Description: " . htmlspecialchars($roomdesc) . "<br>";
+                    echo "Starting availability: " . htmlspecialchars($startAvail) . " <br>";
+                    echo "Ending availability: " . htmlspecialchars($endAvail). "<br>";
                     echo "<form action = 'createBooking.php' method='post' enctype='multipart/form-data'>";
                     echo "<input type='submit' name='bookRoom' value='Book Room'/>";
                     echo "<input type='hidden' name='roomNum' value='".$roomNum."'/>"; //hidden - Anything submitted can be accessed thru post. Used to go to createBooking.php

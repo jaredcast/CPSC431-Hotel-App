@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <td>Phone number:</td>
-                    <td><input type="text" name="phone" size="20" maxlength="100" /></td>
+                    <td><input type="tel" name="phone" size="20" maxlength="100" /></td>
                 </tr>
                 <tr>
                     <td>Role:</td>
@@ -46,6 +46,11 @@
     $name = $_POST['name'];
     $role = $_POST['role'];
     $phone = $_POST['phone'];
+
+    $username = strip_tags($username);
+    $email = strip_tags($email);
+    $password = strip_tags($password);
+    $name = strip_tags($name);
     
 
     if (isset($_POST['signup']))
@@ -86,10 +91,10 @@
 
         if ($statement->affected_rows > 0) {
             echo "<p>User successfully signed up.</p>";
-            echo "<p><a href=\"guesthome.php\"><button>Guest Home</button></a></p>";
+            echo "<p><a href=\"login.php\"><button>Back to Login</button></a></p>";
             //echo $query;
         } else {
-            echo "<p>An error has occurred with signing up.</p>";
+            echo "<p>An error has occurred with signing up. There exists a user with either your requested username or email.</p>";
             }
         $db->close();
     }

@@ -22,13 +22,16 @@ if (isset($login)) {
         echo "<p>Error: Cannot connect to database!</p>";
         exit;
     }
+    
+    // INJECTION TEST WITH OLD SQL - CAN BE RUINED!
+    //Password checker - ' OR ''='
+    //$loginQuery = "SELECT * FROM users WHERE username ='" .$username. "' AND password = '" .$password."'";
 
-    $loginQuery = "SELECT * FROM users WHERE username ='" .$username. "' AND password = '" .$password."'";
-    #$loginQuery = "SELECT * FROM users WHERE username ='" .$username. "' AND password= '".$password."'";
-    //$loginQuery = "SELECT * FROM users WHERE username = ? AND password = ? AND email = ?";
-    //echo $loginQuery ."<br>";
-    #$result = $db->query($loginQuery);
-    $statement = $db->prepare($loginQuery);
+    #bind_param - variables INTO query https://stackoverflow.com/questions/63906505/bind-param-and-bind-result-is-there-a-difference 
+
+    $loginQuery = "SELECT * FROM users WHERE username = ? AND password = ?";
+    $statement = $db->prepare($loginQuery); //Prepare login query
+    $statement->bind_param('ss', $username, $password); //Needed to avoid sql injection
     $statement->execute();
     $statement->store_result();
     if ($statement->num_rows > 0)
@@ -63,8 +66,10 @@ if (isset($login)) {
     }
     else {
         echo "Failed to log in. There is an error with your username or password.";
+        //echo "<br>" . $username ."<br>";
+        //echo $password;
         session_destroy();
-        echo "<p><a href=\"login.php\">Return to Home</a></p>";
+        echo "<p><a href=\"login.php\"><button>Back to Login</button></a></p>";
         exit;
     }
     // else {
