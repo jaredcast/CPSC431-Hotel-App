@@ -34,17 +34,16 @@
         echo "Room Description: " . htmlspecialchars($roomdesc) . "<br>";
         echo "Start date: " . htmlspecialchars($start) . "<br>";
         echo "End date: " . htmlspecialchars($end) . "<br>";
+        echo "<form action = 'roomInfo.php?id=".$roomNum."' method='post' enctype='multipart/form-data'>";
+        echo "<input type='submit' name='viewRoom' value='View room bookings'/>";
+        echo "<input type='hidden' name='roomNum' value='".$roomNum."'/>";
+        echo "</form>";
         echo "<br><br>";
         // echo "<form action=\"\" method=\"POST\">
         // <input type=\"submit\" name=\"submit\" value=\"".$roomNum."\">
         // </form>";
     
     }
-    // if (isset($_POST['submit'])) {
-    //     echo "Yes";
-    //     echo $roomNum;
-    //   }
-
 ?>
 
 <!-- 
