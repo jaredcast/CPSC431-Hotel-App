@@ -29,7 +29,7 @@ if (isset($login)) {
 
     #bind_param - variables INTO query https://stackoverflow.com/questions/63906505/bind-param-and-bind-result-is-there-a-difference 
 
-    $loginQuery = "SELECT * FROM users WHERE username = ? AND password = ?";
+    $loginQuery = "SELECT * FROM users WHERE BINARY username = BINARY ? AND BINARY password = BINARY ?";
     $statement = $db->prepare($loginQuery); //Prepare login query
     $statement->bind_param('ss', $username, $password); //Needed to avoid sql injection
     $statement->execute();

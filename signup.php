@@ -79,6 +79,16 @@
             exit;
         }
 
+        if (strpos($username, ' ') == true || strpos($password, ' ') == true) {
+            echo "ERROR: Space found in field.";
+            exit;
+        }
+
+        if (strlen($password) < 6) {
+            echo "ERROR: Password is too short. Make it longer than six characters.";
+            exit;
+        }
+
         @$db = new mysqli('mariadb', 'cs431s26', 'Uo3io9ve', 'cs431s26');
         if (mysqli_connect_errno()) {
             echo "<p>Error: Cannot connect to database!</p>";

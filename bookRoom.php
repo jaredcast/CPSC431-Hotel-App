@@ -1,6 +1,7 @@
 <?php
 $roomNum = $_POST['roomNum'];
 $price = $_POST['price'];
+$guests = $_POST['guests'];
 $beds = $_POST['beds'];
 $type = $_POST['type'];
 $roomdesc = $_POST['roomdesc'];
@@ -84,6 +85,10 @@ $choice = $_GET['choice'];
                             <td><label for="start">End date:</label></td>
                             <td><input type="date" id="end" name="end"></td>
                         </tr>
+                        <tr>
+                            <td>Guests:</td>
+                            <td><input type="number" name="guests" min="1"/></td>
+                        </tr>
                 </table>  
                 <input type="submit" name="searchRoom" value="Search for rooms"/>
         </form>
@@ -93,6 +98,7 @@ $choice = $_GET['choice'];
             $bookMinPrice =  $_POST['minPrice'];
             $bookMaxPrice =  $_POST['maxPrice'];
             $bookBeds =  $_POST['beds'];
+            $bookGuests=  $_POST['guests'];
             $bookType =  $_POST['type'];
             $bookStart =  $_POST['start'];
             $bookEnd =  $_POST['end'];
@@ -101,6 +107,7 @@ $choice = $_GET['choice'];
             $_SESSION['bookMinPrice'] = $bookMinPrice;
             $_SESSION['bookMaxPrice'] = $bookMaxPrice;
             $_SESSION['bookBeds'] = $bookBeds;
+            $_SESSION['bookGuests'] = $bookGuests;
             $_SESSION['bookType'] = $bookType;
             $_SESSION['bookStart'] = $bookStart;
             $_SESSION['bookEnd'] = $bookEnd;
@@ -112,6 +119,12 @@ $choice = $_GET['choice'];
                 if (empty($start) || empty($end))
                 {
                     echo "<p>Error, missing dates.</p>";
+                    exit;
+                }
+
+                if (empty($bookGuests))
+                {
+                    echo "<p>Error, missing guests.</p>";
                     exit;
                 }
 

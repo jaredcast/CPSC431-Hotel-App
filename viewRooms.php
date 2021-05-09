@@ -18,7 +18,7 @@
         echo "<p>Error: Cannot connect to database!</p>";
         exit;
     }
-    $query = "SELECT * FROM rooms";
+    $query = "SELECT * FROM rooms ORDER BY roomNum";
     $statement = $db->prepare($query);
     $statement->execute();
     $statement->store_result();
@@ -34,7 +34,7 @@
         echo "Room Description: " . htmlspecialchars($roomdesc) . "<br>";
         echo "Start date: " . htmlspecialchars($start) . "<br>";
         echo "End date: " . htmlspecialchars($end) . "<br>";
-        echo "<form action = 'roomInfo.php?id=".$roomNum."' method='post' enctype='multipart/form-data'>";
+        echo "<form action = 'bookingInfo.php?id=".$roomNum."' method='post' enctype='multipart/form-data'>";
         echo "<input type='submit' name='viewRoom' value='View room bookings'/>";
         echo "<input type='hidden' name='roomNum' value='".$roomNum."'/>";
         echo "</form>";

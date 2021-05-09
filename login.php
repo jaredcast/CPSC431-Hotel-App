@@ -4,6 +4,7 @@ session_start();
 if (isset($_SESSION['role']) && $_SESSION['role'] == "guest")
 {
     echo "You are already logged in.";
+    echo "<br>Logged in as: " . $_SESSION['role'];
     echo "<p><a href=\"guesthome.php\"><button>Return to Guest Home</button></a></p>";
     exit;
 }
@@ -11,6 +12,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == "guest")
 else if (isset($_SESSION['role']) && $_SESSION['role'] == "admin")
 {
     echo "You are already logged in.";
+    echo "<br>Logged in as: " . $_SESSION['role'];
     echo "<p><a href=\"adminhome.php\"><button>Return to Admin Home</button></a></p>";
     exit;
 }   

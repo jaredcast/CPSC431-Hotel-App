@@ -120,9 +120,7 @@
             //Prepare insert statement
             $statement = $db->prepare($query); 
             //Bind variables to params
-            $statement->bind_param('ssssssss', $roomNum, $price, $beds, $type, $roomdesc, $start, $end, $filename); 
-            //$statement->bind_param('ssssssss', $db->real_escape_string($roomNum), $db->real_escape_string($price), $db->real_escape_string($beds), $db->real_escape_string($type), $db->real_escape_string($roomdesc), $db->real_escape_string($start), $db->real_escape_string($end), $db->real_escape_string($filename));
-            
+            $statement->bind_param('ssssssss', $roomNum, $price, $beds, $type, $roomdesc, $start, $end, $filename);             
             //Execute statement https://www.php.net/manual/en/mysqli-stmt.execute
             $statement->execute();
             if ($statement->affected_rows > 0) {

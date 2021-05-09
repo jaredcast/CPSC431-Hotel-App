@@ -44,15 +44,15 @@
         }
 
         //Insert new booking
-        $query = "INSERT INTO bookings (guestUsername, roomNum, startDate, endDate) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO bookings (guestUsername, roomNum, guests, startDate, endDate) VALUES (?, ?, ?, ?, ?)";
         $statement = $db->prepare($query);
-        $statement->bind_param('ssss', $_SESSION['username'], $roomNum, $_SESSION['bookStart'], $_SESSION['bookEnd']);
+        $statement->bind_param('sssss', $_SESSION['username'], $roomNum, $_SESSION['bookGuests'], $_SESSION['bookStart'], $_SESSION['bookEnd']);
         $statement->execute();
 
         //Summarize the booking if it went through. If not, there was a conflicting error
         if ($statement->affected_rows > 0) {
             echo "<p>Your booking was successfully added.</p>";
-            echo "<p>" . $_SESSION['username'] . " is booked for Room Number " .$roomNum. " from " . $_SESSION['bookStart'] . " to " . $_SESSION['bookEnd']; 
+            echo "<p>" . $_SESSION['username'] . " is booked for Room Number " .$roomNum. " from " . $_SESSION['bookStart'] . " to " . $_SESSION['bookEnd'] . " with " . $_SESSION['bookGuests'] . " guests."; 
         } else {
             echo "<p>An error has occurred with querying the database.</p>";
             echo "<p><a href=\"bookRoom.php\"><button>Return to Booking Screen</button></a></p>";
@@ -70,16 +70,20 @@
         while($statement2->fetch()) {
             echo "<tr><td>";
             echo "<img src=\"uploads/" . $filename . "\"/><br>"; 
-            echo "<p>Room: " . $roomNum . "<br>";
-            echo "Price: " . $price . "<br>";
-            echo "Beds: " . $beds . "<br>";
-            echo "Type: " . $type . "<br>";
-            echo "Description: " . $roomdesc . "<br>";
-            echo "Start of stay: " . $_SESSION['bookStart'] . " <br>";
-            echo "End of stay: " . $_SESSION['bookEnd'] . "<br></p></td></tr>";
+            echo "<p>Room: " . htmlspecialchars($roomNum) . "<br>";
+            echo "Price: " . htmlspecialchars($price) . "<br>";
+            echo "Beds: " . htmlspecialchars($beds) . "<br>";
+            echo "Type: " . htmlspecialchars($type) . "<br>";
+            echo "Description: " . htmlspecialchars($roomdesc) . "<br>";
+            echo "Guests: " . htmlspecialchars($_SESSION['bookGuests']) . " <br>";
+            echo "Start of stay: " . htmlspecialchars($_SESSION['bookStart']) . " <br>";
+            echo "End of stay: " . htmlspecialchars($_SESSION['bookEnd']) . "<br></p></td></tr>";
         }
+        echo "</table>";
         $statement2->free_result();
         $db->close();
+
+        echo "<p><a href=\"guesthome.php\"><button>Return to Guest Home</button></a></p>";
         }
     else {
         echo "Failed to book the room.";
