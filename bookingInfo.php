@@ -2,7 +2,9 @@
     session_start();
     //echo "Logged in as " .$_SESSION['username'];
     $date = date("Y-m-d");
-    $roomNum = $_POST['roomNum'];
+    //$roomNum = $_POST['roomNum']; //maybe keep this as a query string parameter
+
+    $roomNum = $_SERVER['QUERY_STRING'];
     
     if (isset($_SESSION['role']) && $_SESSION['role'] == "admin")
     {
@@ -49,10 +51,10 @@
             echo "Full Name: " .htmlspecialchars($name) . "</br>";
             echo "Email: " .htmlspecialchars($email) . "</br>";
             echo "Phone: " .htmlspecialchars($phone) . "</p>";
-            echo "</td></tr>";
-            echo "<form action = 'deleteBooking.php?id=".$roomNum."' method='post' enctype='multipart/form-data'>";
+            echo "<form action = 'deleteBooking.php?".$roomNum."' method='post' enctype='multipart/form-data'>";
             echo "<input type='submit' name='delBooking' value='Delete booking'/>";
             echo "<input type='hidden' name='bookingID' value='".$bookingID."'/>";
+            echo "</td></tr>";
             echo "</form>";
         }
         if ($stmt->affected_rows == 0) {

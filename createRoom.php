@@ -1,9 +1,28 @@
-<?php
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    		<link rel="stylesheet" type="text/css" href="stylesheet1.css" />
+	</head>	
+	<body>
+    <header>
+        <nav>
+            <b>Tuffy Hotel Booking Website</b>
+            <p>          
+                <a href = "login.php"> Log in </a>
+                <a href = "logout.php"> Log Out </a>
+                <a href = "viewRooms.php"> View All Rooms </a>
+                <a href = "createRoom.php"> Create a Room </a>
+            </p>            
+        </nav>
+    </header>
+
+    <?php
     session_start();
     $date = date("Y-m-d");
     if (isset($_SESSION['role']) && $_SESSION['role'] == "admin")
     {
-        echo "<h1>Create a Room</h1>";
+        echo "<div class = \"title\"><b>Create a Room</b></div>";
     }
     else {
         echo "You are not logged in and not authorized to view this page.";
@@ -15,57 +34,56 @@
 
 <!DOCTYPE html>
 <html> 
-    <section id = "login_screen">
-        <form method="post" enctype="multipart/form-data">
-            <table style="border: 5px;">
-                <tr>
-                    <td>Room Number:</td>
-                    <td><input type="number" name="roomNum" min="1"/></td>
-                </tr>
-                <tr>
-                    <td>Price:</td>
-                    <td><input type="number" name="price" min="1"/></td>
-                </tr>
-                <tr>
-                    <td>Beds:</td>
-                    <td><input type="number" name="beds" min="1"/></td>
-                </tr>
-                <tr>
-                    <td>Type:</td>
-                    <td>                          
-                        <input type="radio" id="value" name="type" value="value">
-                        <label for="value">Value</label>
-                        
-                        <input type="radio" id="normal" name="type" value="normal">
-                        <label for="normal">Normal</label>
-                        
-                        <input type="radio" id="deluxe" name="type" value="deluxe">
-                        <label for="deluxe">Deluxe</label>
-                        
-                        <input type="radio" id="penthouse" name="type" value="penthouse">
-                        <label for="penthouse">Penthouse</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="start">Start date:</label></td>
-                    <td><input type="date" id="start" name="start" min="<?php echo $date; ?>" max="12-31-2030"></td>                    
-                </tr>
-                <tr>
-                    <td><label for="start">End date:</label></td>
-                    <td><input type="date" id="end" name="end"></td>
-                </tr>
-                <tr>
-                    <td>Description:</td>
-                    <td><textarea name="roomdesc" rows="10" cols="30"></textarea></td>
-                </tr>
-                <tr>
-                    <td>Room image:</td>
-                    <td><input type="file" name="imgUpload" id="imgUpload"></td>
-                </tr>
-            </table>           
-                <input type="submit" name="newRoom" value="Create room"/>
-        </form>
-    </section>
+    <form method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>Room Number:</td>
+                <td><input type="number" name="roomNum" min="1"/></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="number" name="price" min="1"/></td>
+            </tr>
+            <tr>
+                <td>Beds:</td>
+                <td><input type="number" name="beds" min="1"/></td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>                          
+                    <input type="radio" id="value" name="type" value="value">
+                    <label for="value">Value</label>
+                    
+                    <input type="radio" id="normal" name="type" value="normal">
+                    <label for="normal">Normal</label>
+                    
+                    <input type="radio" id="deluxe" name="type" value="deluxe">
+                    <label for="deluxe">Deluxe</label>
+                    
+                    <input type="radio" id="penthouse" name="type" value="penthouse">
+                    <label for="penthouse">Penthouse</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="start">Start date:</label></td>
+                <td><input type="date" id="start" name="start" min="<?php echo $date; ?>" max="12-31-2030"></td>                    
+            </tr>
+            <tr>
+                <td><label for="start">End date:</label></td>
+                <td><input type="date" id="end" name="end"></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><textarea name="roomdesc" rows="10" cols="30"></textarea></td>
+            </tr>
+            <tr>
+                <td>Room image:</td>
+                <td><input type="file" name="imgUpload" id="imgUpload"></td>
+            </tr>
+        </table>           
+            <input type="submit" name="newRoom" value="Create room"/>
+    </form>
+</body>
 </html>
 
 <?php

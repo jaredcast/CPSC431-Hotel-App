@@ -2,6 +2,7 @@
     session_start();
     //echo "Logged in as " .$_SESSION['username'];
     $bookingID = $_POST['bookingID'];
+    $roomNum = $_SERVER['QUERY_STRING'];
     if (isset($_SESSION['role']) && $_SESSION['role'] == "admin")
     {
         echo "Deleting booking number: " .htmlspecialchars($bookingID) . "<br><br>";
@@ -26,7 +27,7 @@
         $stmt->execute();
         if ($stmt->affected_rows > 0) {
             echo "<p>Booking successfully deleted.</p>";
-            echo "<p><a href=\"viewRooms.php\"><button>Return to Viewing All Rooms</button></a></p>";
+            echo "<p><a href=\"bookingInfo.php?".$roomNum."\"><button>Return to Viewing All Rooms</button></a></p>";
         } else {
             echo "<p>An error has occurred with querying the database.</p>";
         }

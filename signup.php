@@ -1,4 +1,23 @@
 <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    		<link rel="stylesheet" type="text/css" href="stylesheet1.css" />
+    		<title></title>
+	</head>	
+	<body>
+    <header>
+        <nav>
+            <h1>Tuffy Hotel Booking Website</h1>
+            <p>
+                <a href = "login.php"> Log in </a>
+                <a href = "logout.php"> Log Out </a>
+                <a href = "signup.php"> Sign Up </a>
+            </p> 
+        </nav>
+    </header>
+
+<!DOCTYPE html>
 <html> 
     <section id = "login_screen">
         <form method="post">

@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    		<link rel="stylesheet" type="text/css" href="stylesheet1.css" />
+    		<title></title>
+	</head>	
+	<body>
+    <header>
+        <nav>
+            <h1>Hotel Booking Website</h1>
+            <p>
+                <a href = "login.php"> Log in </a>
+                <a href = "logout.php"> Log Out </a>
+                <a href = "bookRoom.php"> Book a room </a>
+            </p> 
+        </nav>
+    </header>
+    
 <?php
     session_start();
     if (isset($_SESSION['role']) && $_SESSION['role'] == "guest")
@@ -17,11 +36,9 @@
 
 <!DOCTYPE html>
 <html>
-    <section id = "guest_menu">
-    <table style="border: 0px;">
+    <table>
         <tr><td><a href = "bookRoom.php"><input type="submit" name="bookroom" value="Book a room"/></td></tr>
         <tr><td><input type="submit" name="asdf" value="asdf"/></td></tr>
         <tr><td><a href="logout.php"><button>Log out</button></a></td></tr>
     </table>
-    </section>
 </html>

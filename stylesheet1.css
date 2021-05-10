@@ -6,13 +6,21 @@ body
 
 nav{
     float: left;
-    padding: 20px 40px 15px 40px;
+    padding: 3px 3px 15px 30px;
     width: -webkit-fill-available;
     background-color: lightblue;
 }
 
-nav p{
-    display: inline;
+nav b {
+    font-size: 30px;
+}
+
+nav a{
+  float: left;
+  color:black;
+  text-align: center;
+  padding: 2px 10px;
+  text-decoration: none;
 }
 
 nav ul{
@@ -29,10 +37,15 @@ header a{
     text-decoration: none;
 }
 
+header h1 {
+    font-size: 24px;
+}
+
 header #links{
     float: right;
     margin-right: 70px;
 }
+
 
 #showcase{
     height: 100px;
@@ -44,12 +57,6 @@ header #links{
     margin-left: 40px;
 }
 
-#showcase h3{
-    font-size: 16px;
-    color: dimgray;
-    margin-top: 7px;
-    margin-left: 40px;
-}
 
 #displaybox{
     width: 100%;
@@ -71,18 +78,18 @@ header #links{
     margin-right:auto;
 }
 
-#display h2{
+/* #display h2{
     text-align: center;
     font-weight: 700;
 
     padding: 10px 0px 20px 0px;
-}
+} */
 
-#login_screen table{
+/* #login_screen table{
     margin-left: auto;
     margin-right: auto;
     width: 290px;
-}
+} */
 
 table tr{
     padding-bottom: 40px;
@@ -184,4 +191,50 @@ justify-content: center;
 .showcase p{
 	margin-left: 30px;
 	margin-right: 30px;
+}
+
+.title {
+    text-align:center;
+}
+
+.title b {
+    font-size: 28px;
+    text-align: center;
+}
+
+.gallery-container{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: flex-start;
+
+}
+
+.gallery-container a{
+	width: 230px;
+	margin: 20px 10px 0px 10px;
+	text-decoration: none;
+}
+
+.gallery-container p{
+	padding-left: 30px;
+	width: 100%;
+	margin: 16px 0px 0px 0px;
+	-webkit-text-stroke: thin;
+	text-transform: capitalize;
+    	text-align: left;
+}
+
+img{
+	height: 220px;
+	width: 280px;
+	margin: 20px 10px 0px 1px;
+}
+
+.booking {
+    padding-left: 30px;
+	width: 100%;
+	margin: 16px 0px 0px 0px;
+	
 }

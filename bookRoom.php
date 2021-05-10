@@ -20,31 +20,33 @@ $choice = $_GET['choice'];
     		<title></title>
 	</head>	
 	<body>
-		<header>
-			<nav>
-				<p>
-					<a href = "homepage.html"> Hotel Booking Website </a>
-				</p>
-			</nav>
-		</header>
+    <header>
+        <nav>
+            <h1>Tuffy Hotel Booking Website</h1>
+            <p>
+                <a href = "login.php"> Log in </a>
+                <a href = "logout.php"> Log Out </a>
+            </p> 
+        </nav>
+    </header>
 
-		<?php
-            session_start();
-            $date = date("Y-m-d");
-            if (isset($_SESSION['role']) && $_SESSION['role'] == "guest")
-            {
-                echo "Booking a room<br><br>";
-            }
-            else if (isset($_SESSION['role']) && $_SESSION['role'] == "guest") {
-                echo "Admin screen";
-            }
-            else {
-                echo "You are not logged in and not authorized to view this page.";
-                session_destroy();
-                echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
-                exit;
-            }
-		?>
+    <?php
+        session_start();
+        $date = date("Y-m-d");
+        if (isset($_SESSION['role']) && $_SESSION['role'] == "guest")
+        {
+            echo "<div class = \"title\"><b>Booking a Room</b></div>";
+        }
+        else if (isset($_SESSION['role']) && $_SESSION['role'] == "guest") {
+            echo "Admin screen";
+        }
+        else {
+            echo "You are not logged in and not authorized to view this page.";
+            session_destroy();
+            echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
+            exit;
+        }
+    ?>
 
         <form method="post" enctype="multipart/form-data">
                 <table style="border: 5px;">
@@ -184,6 +186,6 @@ $choice = $_GET['choice'];
             }
 		?>
 		
-	</div>
+        </div>
 	</body>
 </html>

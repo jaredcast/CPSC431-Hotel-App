@@ -6,13 +6,16 @@
     		<title></title>
 	</head>	
 	<body>
-		<header>
-			<nav>
-				<p>
-					<a href = "homepage.html"> Hotel Booking Website </a>
-				</p>
-			</nav>
-		</header>
+    <header>
+        <nav>
+            <h1>Hotel Booking Website</h1>
+            <p>
+                <a href = "login.php"> Log in </a>
+                <a href = "logout.php"> Log Out </a>
+                <a href = "bookRoom.php"> Book a room </a>
+            </p> 
+        </nav>
+    </header>
 
 <?php
     session_start();

@@ -1,8 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    		<link rel="stylesheet" type="text/css" href="stylesheet1.css" />
+	</head>	
+	<body>
+    <header>
+        <nav>
+            <b>Tuffy Hotel Booking Website</b>
+            <p>          
+                <a href = "login.php"> Log in </a>
+                <a href = "logout.php"> Log Out </a>
+                <a href = "viewRooms.php"> View All Rooms </a>
+                <a href = "createRoom.php"> Create a Room </a>
+            </p>            
+        </nav>
+    </header>
+
 <?php
     session_start();
     if (isset($_SESSION['role']) && $_SESSION['role'] == "admin")
     {
-        echo "<h1>View Rooms</h1>";
+        echo "<div class = \"title\"><b>View rooms</b></div>";
     }
     else {
         echo "You are not logged in and not authorized to view this page.";
@@ -24,8 +43,9 @@
     $statement->store_result();
     $statement->bind_result($roomNum, $price, $beds, $type, $roomdesc, $start, $end, $filename);
     echo "<p>Number of rooms found: ".$statement->num_rows."</p>";
-
+    echo"<div class = \"gallery-container\">";
     while($statement->fetch()) {
+        
         echo "<img src=\"uploads/" . $filename . "\"/><br>";
         echo "Room Number: " . htmlspecialchars($roomNum) . "<br>";
         echo "Price: " . htmlspecialchars($price) . "<br>";
@@ -34,7 +54,7 @@
         echo "Room Description: " . htmlspecialchars($roomdesc) . "<br>";
         echo "Start date: " . htmlspecialchars($start) . "<br>";
         echo "End date: " . htmlspecialchars($end) . "<br>";
-        echo "<form action = 'bookingInfo.php?id=".$roomNum."' method='post' enctype='multipart/form-data'>";
+        echo "<form action = 'bookingInfo.php?".$roomNum."' method='post' enctype='multipart/form-data'>";
         echo "<input type='submit' name='viewRoom' value='View room bookings'/>";
         echo "<input type='hidden' name='roomNum' value='".$roomNum."'/>";
         echo "</form>";
@@ -42,32 +62,6 @@
         // echo "<form action=\"\" method=\"POST\">
         // <input type=\"submit\" name=\"submit\" value=\"".$roomNum."\">
         // </form>";
-    
     }
+    echo "</div>";
 ?>
-
-<!-- 
-function update_book($oldisbn, $isbn, $title, $author, $catid,
-                     $price, $description) {
-// change details of book stored under $oldisbn in
-// the database to new details in arguments
-
-   $conn = db_connect();
-
-   $query = "update books
-             set isbn= '".$conn->real_escape_string($isbn)."',
-             title = '".$conn->real_escape_string($title)."',
-             author = '".$conn->real_escape_string($author)."',
-             catid = '".$conn->real_escape_string($catid)."',
-             price = '".$conn->real_escape_string($price)."',
-             description = '".$conn->real_escape_string($description)."'
-             where isbn = '".$conn->real_escape_string($oldisbn)."'";
-
-   $result = @$conn->query($query);
-   if (!$result) {
-     return false;
-   } else {
-     return true;
-   }
-}
- -->
