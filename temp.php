@@ -62,11 +62,29 @@
 // echo "html special chars" .htmlspecialchars("<h1>HTML injection</h1>");
 
 //SQL
-$a = 'How are you?';
+// $a = 'How are you?';
 
-if (strpos($a, 'are') !== false) {
-    echo 'true';
-}
+// if (strpos($a, 'are') !== false) {
+//     echo 'true';
+// }
     
-    echo "HI";
-    ?>
+//     echo "HI";
+
+
+$value = "h1HTMLinjectionh1";
+$pat = "^a-zA-Z\d\s:";
+if (preg_match("/^[a-zA-Z0-9]+$/", $value))
+{
+  echo "Match";
+}
+else {
+    echo "No match";
+}
+
+$email = "Temp@gmail.com";
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "ERROR: Invalid email.";
+    exit;
+}
+
+?>

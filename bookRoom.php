@@ -43,7 +43,7 @@ $choice = $_GET['choice'];
         else {
             echo "You are not logged in and not authorized to view this page.";
             session_destroy();
-            echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
+            echo "<p><a href=\"login.php\"><button>Return to Login</button></a></p>";
             exit;
         }
     ?>
@@ -84,7 +84,7 @@ $choice = $_GET['choice'];
                             <td><input type="date" id="start" name="start" max="12-31-2030"></td>                    
                         </tr>
                         <tr>
-                            <td><label for="start">End date:</label></td>
+                            <td><label for="end">End date:</label></td>
                             <td><input type="date" id="end" name="end"></td>
                         </tr>
                         <tr>
@@ -95,97 +95,97 @@ $choice = $_GET['choice'];
                 <input type="submit" name="searchRoom" value="Search for rooms"/>
         </form>
         
-	<div class = "showcase">	
-		<?php
-            $bookMinPrice =  $_POST['minPrice'];
-            $bookMaxPrice =  $_POST['maxPrice'];
-            $bookBeds =  $_POST['beds'];
-            $bookGuests=  $_POST['guests'];
-            $bookType =  $_POST['type'];
-            $bookStart =  $_POST['start'];
-            $bookEnd =  $_POST['end'];
+    <?php
+        $bookMinPrice =  $_POST['minPrice'];
+        $bookMaxPrice =  $_POST['maxPrice'];
+        $bookBeds =  $_POST['beds'];
+        $bookGuests=  $_POST['guests'];
+        $bookType =  $_POST['type'];
+        $bookStart =  $_POST['start'];
+        $bookEnd =  $_POST['end'];
 
-            //Set temp session variables
-            $_SESSION['bookMinPrice'] = $bookMinPrice;
-            $_SESSION['bookMaxPrice'] = $bookMaxPrice;
-            $_SESSION['bookBeds'] = $bookBeds;
-            $_SESSION['bookGuests'] = $bookGuests;
-            $_SESSION['bookType'] = $bookType;
-            $_SESSION['bookStart'] = $bookStart;
-            $_SESSION['bookEnd'] = $bookEnd;
-            
-            // echo empty($beds);
-            if (isset($_POST['searchRoom'])) {               
-        	    //Connect to database
-                #if ($start == "" || $end == "" || !isset($start) || !isset($end))
-                if (empty($start) || empty($end))
-                {
-                    echo "<p>Error, missing dates.</p>";
-                    exit;
-                }
-
-                if (empty($bookGuests))
-                {
-                    echo "<p>Error, missing guests.</p>";
-                    exit;
-                }
-
-                @$db = new mysqli('mariadb', 'cs431s26', 'Uo3io9ve', 'cs431s26');
-                if (mysqli_connect_errno()) {
-                    echo "<p>Error: Cannot connect to database!</p>";
-                    exit;
-                }
-
-                $query = "SELECT * FROM rooms WHERE start >= '" . $bookStart . "' AND end >= '" .$bookEnd. "'"; //End date needs to be extended past how long the guest wants to stay. Availability
-                //echo $query;
-
-                //Add anything needed to query.
-                if (!empty($bookMinPrice)) {
-                    $query .= " AND price >= '" .$mibookMinPricenPrice. "'";
-                }
-                if (!empty($bookMaxPrice)) {
-                    $query .= " AND price <= '" .$bookMaxPrice. "'";
-                }
-                if (!empty($bookBeds)) {
-                    $query .= " AND beds = '" .$bookBeds. "'";
-                }
-                if (!empty($bookType)) {
-                    $query .= " AND type = '" .$bookType. "'";
-                }
-                // echo "Query : " . $query;
-                // SELECT * FROM rooms WHERE start >= '2021-05-05' AND end >= '2021-07-20' AND price <= '10000'
-
-                $stmt = $db->prepare($query);
-                //$stmt->bind_param($choice, Type);  
-                $stmt->execute();
-                $stmt->store_result();		
-                $stmt->bind_result($roomNum, $price, $beds, $type, $roomdesc, $startAvail, $endAvail, $filename);
-
-                echo "<table>";
-                //While the statement fetches different queries in the database, keep printing out the information.
-                //Show the info for each hotel room that matches.
-                while($stmt->fetch()) {
-                    echo "<tr><td>";
-                    echo "<img src=\"uploads/" . $filename . "\"/><br>"; 
-                    echo "<p>Room: " . htmlspecialchars($roomNum) . "<br>";
-                    echo "Price: " . htmlspecialchars($price) . "<br>";
-                    echo "Beds: " . htmlspecialchars($beds) . "<br>";
-                    echo "Type: " . htmlspecialchars($type) . "<br>";
-                    echo "Description: " . htmlspecialchars($roomdesc) . "<br>";
-                    echo "Starting availability: " . htmlspecialchars($startAvail) . " <br>";
-                    echo "Ending availability: " . htmlspecialchars($endAvail). "<br>";
-                    echo "<form action = 'createBooking.php' method='post' enctype='multipart/form-data'>";
-                    echo "<input type='submit' name='bookRoom' value='Book Room'/>";
-                    echo "<input type='hidden' name='roomNum' value='".$roomNum."'/>"; //hidden - Anything submitted can be accessed thru post. Used to go to createBooking.php
-                    echo "</form>";
-                    echo "</p></td></tr>";
-                }
-                $statement->free_result();
-                $db->close();
-                //hidden input types
+        //Set temp session variables
+        $_SESSION['bookMinPrice'] = $bookMinPrice;
+        $_SESSION['bookMaxPrice'] = $bookMaxPrice;
+        $_SESSION['bookBeds'] = $bookBeds;
+        $_SESSION['bookGuests'] = $bookGuests;
+        $_SESSION['bookType'] = $bookType;
+        $_SESSION['bookStart'] = $bookStart;
+        $_SESSION['bookEnd'] = $bookEnd;
+        
+        // echo empty($beds);
+        if (isset($_POST['searchRoom'])) {               
+            //Connect to database
+            #if ($start == "" || $end == "" || !isset($start) || !isset($end))
+            if (empty($start) || empty($end))
+            {
+                echo "<p>Error, missing dates.</p>";
+                exit;
             }
-		?>
-		
-        </div>
+
+            if (empty($bookGuests))
+            {
+                echo "<p>Error, missing guests.</p>";
+                exit;
+            }
+
+            @$db = new mysqli('mariadb', 'cs431s26', 'Uo3io9ve', 'cs431s26');
+            if (mysqli_connect_errno()) {
+                echo "<p>Error: Cannot connect to database!</p>";
+                exit;
+            }
+
+            $query = "SELECT * FROM rooms WHERE start <= \"" . $bookStart . "\" AND end >= \"" .$bookEnd. "\""; //End date needs to be extended past how long the guest wants to stay. Availability
+            //echo $query;
+
+            //Add anything needed to query.
+            if (!empty($bookMinPrice)) {
+                $query .= " AND price >= '" .$mibookMinPricenPrice. "'";
+            }
+            if (!empty($bookMaxPrice)) {
+                $query .= " AND price <= '" .$bookMaxPrice. "'";
+            }
+            if (!empty($bookBeds)) {
+                $query .= " AND beds = '" .$bookBeds. "'";
+            }
+            if (!empty($bookType)) {
+                $query .= " AND type = '" .$bookType. "'";
+            }
+            // echo "Query : " . $query;
+            // SELECT * FROM rooms WHERE start >= '2021-05-05' AND end >= '2021-07-20' AND price <= '10000'
+
+            $stmt = $db->prepare($query);
+            //$stmt->bind_param($choice, Type);  
+            $stmt->execute();
+            $stmt->store_result();		
+            $stmt->bind_result($roomNum, $price, $beds, $type, $roomdesc, $startAvail, $endAvail, $filename);
+            echo "<p>Number of rooms found: ".$stmt->num_rows."</p><br>";
+            echo"<div class = \"gallery-container\">";
+            //echo "<table>";
+            //While the statement fetches different queries in the database, keep printing out the information.
+            //Show the info for each hotel room that matches.
+            while($stmt->fetch()) {
+                //echo "<tr><td>";
+                echo "<div class=\"booking\">";
+                echo "<img src=\"uploads/" . $filename . "\"/><br>"; 
+                echo "Room Number: " . htmlspecialchars($roomNum) . "<br>";
+                echo "Price: " . htmlspecialchars($price) . "<br>";
+                echo "Beds: " . htmlspecialchars($beds) . "<br>";
+                echo "Type: " . htmlspecialchars($type) . "<br>";
+                echo "Description: " . htmlspecialchars($roomdesc) . "<br>";
+                echo "Starting availability: " . htmlspecialchars($startAvail) . " <br>";
+                echo "Ending availability: " . htmlspecialchars($endAvail). "<br>";
+                echo "<form action = 'createBooking.php' method='post' enctype='multipart/form-data'>";
+                echo "<input type='submit' name='bookRoom' value='Book Room'/>";
+                echo "<input type='hidden' name='roomNum' value='".$roomNum."'/>"; //hidden - Anything submitted can be accessed thru post. Used to go to createBooking.php
+                echo "</form>";
+                echo "</div>";
+                //echo "</p></td></tr>";
+            }
+            $statement->free_result();
+            $db->close();
+            //hidden input types
+        }
+    ?>
 	</body>
 </html>

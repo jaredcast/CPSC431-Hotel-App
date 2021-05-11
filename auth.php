@@ -13,7 +13,7 @@ if (isset($login)) {
 
     if ($username == "" || $password == "" || !isset($username) || !isset($password)) {
         echo "<p>You have not entered all the required details.<br /> Please go back and try again.</p>";
-        echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
+        echo "<p><a href=\"login.php\"><button>Return to Login</button></a></p>";
         exit;
     }
 
@@ -88,7 +88,7 @@ if (isset($login)) {
         else {
             echo "There was a problem with authenticating your role.";
             session_destroy();
-            echo "<p><a href=\"login.php\">Return to Home</a></p>";
+            echo "<p><a href=\"login.php\">Return to Login</a></p>";
             exit;
         }
         exit;
@@ -96,14 +96,14 @@ if (isset($login)) {
     else {
         echo "Failed to log in. There is an error with your username or password.";
         session_destroy();
-        echo "<p><a href=\"login.php\">Return to Home</a></p>";
+        echo "<p><a href=\"login.php\">Return to Login</a></p>";
         exit;
     }
     echo $result;
 }
 else {
     echo "You are not logged in or authorized to see this page. Please try again later.";
-    echo "<p><a href=\"login.php\">Return to Home</a></p>";
+    echo "<p><a href=\"login.php\">Return to Login</a></p>";
     // echo $login;
 }
 

@@ -66,7 +66,7 @@
             </tr>
             <tr>
                 <td><label for="start">Start date:</label></td>
-                <td><input type="date" id="start" name="start" min="<?php echo $date; ?>" max="12-31-2030"></td>                    
+                <td><input type="date" id="start" name="start" max="12-31-2030"></td>                    
             </tr>
             <tr>
                 <td><label for="start">End date:</label></td>
@@ -144,7 +144,7 @@
             if ($statement->affected_rows > 0) {
                 echo "<p>Room successfully added.</p>";
             } else {
-                echo "<p>An error has occurred with querying the database.</p>";
+                echo "<p>An error has occurred with querying the database. A room with that room number already exists.</p>";
             }
             $db->close();
         }     

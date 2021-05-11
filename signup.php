@@ -103,8 +103,29 @@
             exit;
         }
 
+        if (preg_match("/^[a-zA-Z0-9]+$/", $username) == 0) {
+            echo "ERROR: Invalid character in username field.";
+            exit;
+        }
+        
+        if (preg_match("/^[a-zA-Z0-9]+$/", $password) == 0) {
+            echo "ERROR: Invalid character in password field.";
+            exit;
+        }
+        // https://regex101.com/r/sN7tX4/1
+        // REGEX: Allow spaces in names
+        if (preg_match("/^[a-zA-Z-'\s]+$/", $name) == 0) {
+            echo "ERROR: Invalid character in name field.";
+            exit;
+        }
+     
         if (strlen($password) < 6) {
             echo "ERROR: Password is too short. Make it longer than six characters.";
+            exit;
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "ERROR: Invalid email.";
             exit;
         }
 
@@ -127,57 +148,6 @@
             }
         $db->close();
     }
-
-
-    // if (!$username)
-    // {
-    //     echo "Username not set";
-    // }
-    // if (!$email)
-    // {
-    //     echo "email not set";
-    // }
-    // if (!$password)
-    // {
-    //     echo "password not set";
-    // }
-    // if (!$name)
-    // {
-    //     echo "name not set";
-    // }
-    // if (!$role)
-    // {
-    //     echo "role not set";
-    // }
-    // if (!$phone)
-    // {
-    //     echo "phone not set";
-    // }
-
-    // if (!isset($username))
-    // {
-    //     echo "Username not set ";
-    // }
-    // if (!isset($email))
-    // {
-    //     echo "email not set ";
-    // }
-    // if (!isset($password))
-    // {
-    //     echo "password not set ";
-    // }
-    // if (!isset($name))
-    // {
-    //     echo "name not set ";
-    // }
-    // if (!isset($role))
-    // {
-    //     echo "role not set ";
-    // }
-    // if (!isset($phone))
-    // {
-    //     echo "phone not set ";
-    // }
 ?>
 
 

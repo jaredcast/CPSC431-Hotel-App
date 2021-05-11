@@ -26,7 +26,7 @@
     else {
         echo "You are not logged in and not authorized to view this page.";
         session_destroy();
-        echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
+        echo "<p><a href=\"login.php\"><button>Return to Login</button></a></p>";
         exit;
     }
 
@@ -45,9 +45,9 @@
     echo "<p>Number of rooms found: ".$statement->num_rows."</p>";
     echo"<div class = \"gallery-container\">";
     while($statement->fetch()) {
-        
+        echo "<div class=\"booking\">";
         echo "<img src=\"uploads/" . $filename . "\"/><br>";
-        echo "Room Number: " . htmlspecialchars($roomNum) . "<br>";
+        echo "<b>Room Number: " . htmlspecialchars($roomNum) . "</b><br>";
         echo "Price: " . htmlspecialchars($price) . "<br>";
         echo "Beds: " . htmlspecialchars($beds) . "<br>";
         echo "Room Type: " . htmlspecialchars($type) . "<br>";
@@ -58,7 +58,8 @@
         echo "<input type='submit' name='viewRoom' value='View room bookings'/>";
         echo "<input type='hidden' name='roomNum' value='".$roomNum."'/>";
         echo "</form>";
-        echo "<br><br>";
+        echo "</div>";
+        // echo "<br><br>";
         // echo "<form action=\"\" method=\"POST\">
         // <input type=\"submit\" name=\"submit\" value=\"".$roomNum."\">
         // </form>";

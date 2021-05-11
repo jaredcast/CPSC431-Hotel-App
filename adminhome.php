@@ -22,7 +22,7 @@
     session_start();
     if (isset($_SESSION['role']) && $_SESSION['role'] == "admin")
     {
-        echo "Welcome, " .$_SESSION['name']. "! You are logged in as a " .$_SESSION['role'].".";
+        echo "Welcome, " . htmlspecialchars($_SESSION['name']). "! You are logged in as a " .htmlspecialchars($_SESSION['role']).".";
     }
     else if (isset($_SESSION['role']) && $_SESSION['role'] == "guest") {
         echo "Admin screen";
@@ -30,7 +30,7 @@
     else {
         echo "You are not logged in and not authorized to view this page.";
         session_destroy();
-        echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
+        echo "<p><a href=\"login.php\"><button>Return to Login</button></a></p>";
         exit;
     }
 ?>

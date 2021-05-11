@@ -30,7 +30,7 @@
     else {
         echo "You are not logged in and not authorized to view this page.";
         session_destroy();
-        echo "<p><a href=\"login.php\"><button>Return to Home</button></a></p>";
+        echo "<p><a href=\"login.php\"><button>Return to Login</button></a></p>";
         exit;
     }
     
@@ -55,9 +55,9 @@
         //Summarize the booking if it went through. If not, there was a conflicting error
         if ($statement->affected_rows > 0) {
             echo "<p>Your booking was successfully added.</p>";
-            echo "<p>" . $_SESSION['username'] . " is booked for Room Number " .$roomNum. " from " . $_SESSION['bookStart'] . " to " . $_SESSION['bookEnd'] . " with " . $_SESSION['bookGuests'] . " guests."; 
+            echo "<p>" . htmlspecialchars($_SESSION['username']) . " is booked for Room Number " .htmlspecialchars($roomNum). " from " . htmlspecialchars($_SESSION['bookStart']) . " to " . htmlspecialchars($_SESSION['bookEnd']) . " with " . htmlspecialchars($_SESSION['bookGuests']) . " guests."; 
         } else {
-            echo "<p>An error has occurred with querying the database.</p>";
+            echo "<p>An error has occurred with querying the database. The room may be occupied during these dates.</p>";
             echo "<p><a href=\"bookRoom.php\"><button>Return to Booking Screen</button></a></p>";
             exit;
         }

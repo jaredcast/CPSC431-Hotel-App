@@ -211,30 +211,29 @@ justify-content: center;
 
 }
 
-.gallery-container a{
-	width: 230px;
-	margin: 20px 10px 0px 10px;
-	text-decoration: none;
-}
-
 .gallery-container p{
 	padding-left: 30px;
 	width: 100%;
 	margin: 16px 0px 0px 0px;
 	-webkit-text-stroke: thin;
 	text-transform: capitalize;
-    	text-align: left;
+    text-align: left;
 }
 
 img{
 	height: 220px;
 	width: 280px;
-	margin: 20px 10px 0px 1px;
+
 }
 
 .booking {
     padding-left: 30px;
-	width: 100%;
-	margin: 16px 0px 0px 0px;
-	
+    height: 400px;
+    width: 400px;
+  
+	word-wrap: break-word;
+}
+
+.bookingID {
+    padding-left: 30px;
 }
