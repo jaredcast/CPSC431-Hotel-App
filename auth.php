@@ -72,11 +72,7 @@ if (isset($login)) {
         echo "<p><a href=\"login.php\"><button>Back to Login</button></a></p>";
         exit;
     }
-    // else {
-    //     echo "Failed to log in.";
-    //     echo $statement->num_rows;
-    //     session_destroy();
-    // }
+
     if (isset( $_SESSION['username']) && isset($_SESSION['role'])) {
         echo "Logging in as " .$username;
         if ($_SESSION['role'] == "guest") {

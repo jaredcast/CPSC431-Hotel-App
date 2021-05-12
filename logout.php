@@ -8,7 +8,7 @@
 	<body>
     <header>
         <nav>
-            <h1>Hotel Booking Website</h1>
+            <b>Tuffy Hotel Booking Website</b>
             <p>
                 <a href = "login.php"> Log in </a>
                 <a href = "logout.php"> Log Out </a>

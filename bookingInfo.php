@@ -11,6 +11,7 @@
             <p>          
                 <a href = "login.php"> Log in </a>
                 <a href = "logout.php"> Log Out </a>
+                <a href = "adminhome.php"> Admin home </a>
                 <a href = "viewRooms.php"> View All Rooms </a>
                 <a href = "createRoom.php"> Create a Room </a>
             </p>            

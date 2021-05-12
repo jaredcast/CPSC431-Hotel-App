@@ -8,9 +8,10 @@
     <header>
         <nav>
             <b>Tuffy Hotel Booking Website</b>
-            <p>          
+            <p>         
                 <a href = "login.php"> Log in </a>
                 <a href = "logout.php"> Log Out </a>
+                <a href = "adminhome.php"> Admin home </a>
                 <a href = "viewRooms.php"> View All Rooms </a>
                 <a href = "createRoom.php"> Create a Room </a>
             </p>            
@@ -46,7 +47,7 @@
         $stmt->execute();
         if ($stmt->affected_rows > 0) {
             echo "<p>Booking successfully deleted.</p>";
-            echo "<p><a href=\"bookingInfo.php?".$roomNum."\"><button>Return to Viewing All Rooms</button></a></p>";
+            echo "<p><a href=\"bookingInfo.php?".$roomNum."\"><button>Return to Room</button></a></p>";
         } else {
             echo "<p>An error has occurred with querying the database.</p>";
         }

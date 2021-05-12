@@ -8,11 +8,13 @@
 	<body>
     <header>
         <nav>
-            <h1>Hotel Booking Website</h1>
+            <h1>Tuffy Hotel Booking Website</h1>
             <p>
                 <a href = "login.php"> Log in </a>
                 <a href = "logout.php"> Log Out </a>
+                <a href = "guesthome.php"> Guest Home </a>
                 <a href = "bookRoom.php"> Book a room </a>
+                <a href = "viewBookingGuest.php"> View bookings </a>
             </p> 
         </nav>
     </header>

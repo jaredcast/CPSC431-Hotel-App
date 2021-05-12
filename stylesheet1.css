@@ -8,7 +8,7 @@ nav{
     float: left;
     padding: 3px 3px 15px 30px;
     width: -webkit-fill-available;
-    background-color: lightblue;
+    background-color: rgb(74, 158, 236);
 }
 
 nav b {
@@ -215,8 +215,6 @@ justify-content: center;
 	padding-left: 30px;
 	width: 100%;
 	margin: 16px 0px 0px 0px;
-	-webkit-text-stroke: thin;
-	text-transform: capitalize;
     text-align: left;
 }
 
@@ -237,3 +235,25 @@ img{
 .bookingID {
     padding-left: 30px;
 }
+
+.loginButton {
+    text-align: center;
+    display: inline-block;
+    font-size: 40px;
+    background-color: #47bfd4; /* Green */
+    border: none;
+    color: white;
+    padding: 20px 20px;
+    margin: 30px;
+  }
+
+.signupButton {
+    text-align: center;
+    display: inline-block;
+    font-size: 40px;
+    background-color: #4947d4; /* Green */
+    border: none;
+    color: white;
+    padding: 20px 20px;
+    margin: 30px;
+  }

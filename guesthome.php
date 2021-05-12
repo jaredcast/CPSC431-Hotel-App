@@ -8,11 +8,13 @@
 	<body>
     <header>
         <nav>
-            <h1>Hotel Booking Website</h1>
+            <b>Tuffy Hotel Booking Website</b>
             <p>
                 <a href = "login.php"> Log in </a>
                 <a href = "logout.php"> Log Out </a>
+                <a href = "guesthome.php"> Guest Home </a>
                 <a href = "bookRoom.php"> Book a room </a>
+                <a href = "viewBookingGuest.php"> View bookings </a>
             </p> 
         </nav>
     </header>
@@ -38,7 +40,7 @@
 <html>
     <table>
         <tr><td><a href = "bookRoom.php"><input type="submit" name="bookroom" value="Book a room"/></td></tr>
-        <tr><td><input type="submit" name="asdf" value="asdf"/></td></tr>
+        <tr><td><a href = "viewBookingGuest.php"><input type="submit" name="viewbooking" value="View your bookings"/></td></tr>
         <tr><td><a href="logout.php"><button>Log out</button></a></td></tr>
     </table>
 </html>
